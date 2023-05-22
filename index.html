@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <div id="dal">
+    </div>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script>
+     const dal = document.getElementById("dal");
+     const span = React.createElement("span", {id:"coco",style:{color:"red"}},"Hello i'm span");
+     ReactDOM.render(span, dal);
+  </script>
+</body>
+</html>
