@@ -16,16 +16,18 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
       const dal = document.getElementById("dal")
-      const Title = (
-        <h2
-          onMouseEnter={() => {
-            console.log("good")
-          }}
-        >
-          You Clicked: 0
-        </h2>
-      )
-      const btn = (
+      function Title() {
+        return (
+          <h2
+            onMouseEnter={() => {
+              console.log("good")
+            }}
+          >
+            You Clicked: 0
+          </h2>
+        )
+      }
+      const Btn = () => (
         <button
           onClick={() => {
             console.log("clicked")
@@ -34,8 +36,13 @@
           Click
         </button>
       )
-      const container = React.createElement("div", { id: "test" }, [Title, btn])
-      ReactDOM.render(container, dal)
+      const Container = () => (
+        <div id='test'>
+          <Title />
+          <Btn />
+        </div>
+      )
+      ReactDOM.render(<Container />, dal)
     </script>
   </body>
 </html>
