@@ -13,27 +13,28 @@
       src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
       crossorigin
     ></script>
-    <script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
       const dal = document.getElementById("dal")
-      const h2 = React.createElement(
-        "h2",
-        {
-          onMouseEnter: () => {
+      const Title = (
+        <h2
+          onMouseEnter={() => {
             console.log("good")
-          },
-        },
-        "You Clicked: 0"
+          }}
+        >
+          You Clicked: 0
+        </h2>
       )
-      const btn = React.createElement(
-        "button",
-        {
-          onClick: () => {
+      const btn = (
+        <button
+          onClick={() => {
             console.log("clicked")
-          },
-        },
-        "Click"
+          }}
+        >
+          Click
+        </button>
       )
-      const container = React.createElement("div", { id: "test" }, [h2, btn])
+      const container = React.createElement("div", { id: "test" }, [Title, btn])
       ReactDOM.render(container, dal)
     </script>
   </body>
