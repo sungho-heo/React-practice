@@ -1,17 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>Document</title>
-</head>
-<body>
-    <div id="dal">
-    </div>
-  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-  <script>
-     const dal = document.getElementById("dal");
-     const span = React.createElement("span", {id:"coco",style:{color:"red"}},"Hello i'm span");
-     ReactDOM.render(span, dal);
-  </script>
-</body>
+  </head>
+  <body>
+    <div id="dal"></div>
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script>
+      const dal = document.getElementById("dal")
+      const h2 = React.createElement(
+        "h2",
+        {
+          onMouseEnter: () => {
+            console.log("good")
+          },
+        },
+        "You Clicked: 0"
+      )
+      const btn = React.createElement(
+        "button",
+        {
+          onClick: () => {
+            console.log("clicked")
+          },
+        },
+        "Click"
+      )
+      const container = React.createElement("div", { id: "test" }, [h2, btn])
+      ReactDOM.render(container, dal)
+    </script>
+  </body>
 </html>
