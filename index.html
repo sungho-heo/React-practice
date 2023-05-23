@@ -19,10 +19,13 @@
       const root = ReactDOM.createRoot(dal)
       function App() {
         const [data, countUp] = React.useState(0)
+        const upData = () => {
+          countUp(data + 1)
+        }
         return (
           <div>
             <h2>Click Count:{data}</h2>
-            <button>Click</button>
+            <button onClick={upData}>Click</button>
           </div>
         )
       }
