@@ -15,34 +15,20 @@
     ></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
+      let count = 0
       const dal = document.getElementById("dal")
-      function Title() {
-        return (
-          <h2
-            onMouseEnter={() => {
-              console.log("good")
-            }}
-          >
-            You Clicked: 0
-          </h2>
-        )
+      const root = ReactDOM.createRoot(dal)
+      function upCount() {
+        count = count + 1
+        root.render(<Container />)
       }
-      const Btn = () => (
-        <button
-          onClick={() => {
-            console.log("clicked")
-          }}
-        >
-          Click
-        </button>
-      )
       const Container = () => (
-        <div id='test'>
-          <Title />
-          <Btn />
+        <div>
+          <h2>Click Count:{count}</h2>
+          <button onClick={upCount}>Click</button>
         </div>
       )
-      ReactDOM.render(<Container />, dal)
+      root.render(<Container />)
     </script>
   </body>
 </html>
