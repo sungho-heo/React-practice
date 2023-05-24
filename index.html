@@ -17,7 +17,7 @@
     <script type="text/babel">
       const dal = document.getElementById("dal")
       const root = ReactDOM.createRoot(dal)
-      function App() {
+      function MituesToHours() {
         const [amount, setAmount] = React.useState(0)
         const [filp, setFilp] = React.useState(false)
         const onAmountChange = (event) => {
@@ -32,7 +32,6 @@
         }
         return (
           <div>
-            <h1>Convert Timer</h1>
             <label htmlFor='minutes'>Minutes</label>
             <input
               value={filp ? amount * 60 : amount}
@@ -55,6 +54,67 @@
             </div>
             <button onClick={reset}>Reset</button>
             <button onClick={onFilpClick}>Filp</button>
+          </div>
+        )
+      }
+      function KmTomiles() {
+        const [km, setKm] = React.useState(0)
+        const [reversed, setReversed] = React.useState(false)
+        const changeReverse = () => {
+          reset()
+          setReversed((current) => !current)
+        }
+
+        const changeKm = (event) => {
+          setKm(event.target.value)
+        }
+
+        const reset = () => {
+          setKm(0)
+        }
+        return (
+          <div>
+            <label htmlFor='km'> Km </label>
+            <input
+              value={reversed ? km * 1.609 : km}
+              onChange={changeKm}
+              id='km'
+              placeholder='Km'
+              type='number'
+              disabled={reversed}
+            ></input>
+            <div>
+              <label htmlFor='miles'> Miles </label>
+              <input
+                value={reversed ? km : (km / 1.609).toPrecision(6)}
+                onChange={changeKm}
+                id='miles'
+                placeholder='Miles'
+                type='number'
+                disabled={!reversed}
+              ></input>
+            </div>
+            <button onClick={reset}>Reset</button>
+            <button onClick={changeReverse}>Reverse</button>
+          </div>
+        )
+      }
+      function App() {
+        const [index, setIndex] = React.useState("xx")
+        const changeIndex = (event) => {
+          setIndex(event.target.value)
+        }
+        return (
+          <div>
+            <h1>Select Converter</h1>
+            <select value={index} onChange={changeIndex}>
+              <option value='xx'>Select Converter</option>
+              <option value='0'>Miutes&Hours</option>
+              <option value='1'>Km&miles</option>
+            </select>
+            <hr />
+            {index === "0" ? <MituesToHours /> : index === "xx"}
+            {index === "1" ? <KmTomiles /> : index === "xx"}
           </div>
         )
       }
