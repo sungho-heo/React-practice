@@ -18,31 +18,43 @@
       const dal = document.getElementById("dal")
       const root = ReactDOM.createRoot(dal)
       function App() {
-        const [minutes, setMinutes] = React.useState(0)
-        const onMinutesChange = (event) => {
-          setMinutes(event.target.value)
+        const [amount, setAmount] = React.useState(0)
+        const [filp, setFilp] = React.useState(false)
+        const onAmountChange = (event) => {
+          setAmount(event.target.value)
+        }
+        const reset = () => {
+          setAmount(0)
+        }
+        const onFilpClick = () => {
+          reset()
+          setFilp((current) => !current)
         }
         return (
           <div>
             <h1>Convert Timer</h1>
             <label htmlFor='minutes'>Minutes</label>
             <input
-              value={minutes}
+              value={filp ? amount * 60 : amount}
               id='minutes'
-              onChange={onMinutesChange}
+              onChange={onAmountChange}
               placeholder='Miutes'
               type='number'
+              disabled={filp}
             ></input>
             <div>
               <label htmlFor='hours'>Hours</label>
               <input
-                value={Math.floor(minutes / 60)}
+                value={filp ? amount : Math.floor(amount / 60)}
+                onChange={onAmountChange}
                 id='hours'
                 placeholder='Hours'
                 type='number'
-                disabled={true}
+                disabled={!filp}
               ></input>
             </div>
+            <button onClick={reset}>Reset</button>
+            <button onClick={onFilpClick}>Filp</button>
           </div>
         )
       }
