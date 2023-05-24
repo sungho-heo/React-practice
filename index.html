@@ -18,14 +18,24 @@
       const dal = document.getElementById("dal")
       const root = ReactDOM.createRoot(dal)
       function App() {
-        const [data, countUp] = React.useState(0)
-        const upData = () => {
-          countUp(data + 1)
+        const [minutes, setMinutes] = React.useState()
+        const onMinutesChange = (event) => {
+          setMinutes(event.target.value)
         }
         return (
           <div>
-            <h2>Click Count:{data}</h2>
-            <button onClick={upData}>Click</button>
+            <h1>Convert Timer</h1>
+            <label htmlFor='minutes'>Minutes</label>
+            <input
+              value={minutes}
+              id='minutes'
+              onChange={onMinutesChange}
+              placeholder='Miutes'
+              type='number'
+            ></input>
+            <h3>Convert Minutes:{minutes}</h3>
+            <label htmlFor='hours'>Hours</label>
+            <input id='hours' placeholder='Hours' type='number'></input>
           </div>
         )
       }
