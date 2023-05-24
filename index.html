@@ -76,7 +76,7 @@
           <div>
             <label htmlFor='km'> Km </label>
             <input
-              value={reversed ? km * 1.609 : km}
+              value={reversed ? (km * 1.60934).toPrecision(6) : km}
               onChange={changeKm}
               id='km'
               placeholder='Km'
@@ -86,7 +86,7 @@
             <div>
               <label htmlFor='miles'> Miles </label>
               <input
-                value={reversed ? km : (km / 1.609).toPrecision(6)}
+                value={reversed ? km : (km * 0.621371).toPrecision(6)}
                 onChange={changeKm}
                 id='miles'
                 placeholder='Miles'
