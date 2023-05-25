@@ -14,6 +14,7 @@
       crossorigin
     ></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
     <script type="text/babel">
       const dal = document.getElementById("dal")
       const root = ReactDOM.createRoot(dal)
@@ -100,30 +101,30 @@
         )
       }
       */
-      function Btn({ name, onClick }) {
+      function Btn({ name, fontSize = 16 }) {
         return (
           <button
-            onClick={onClick}
             style={{
               backgroundColor: "skyBlue",
               padding: "10px 20px",
               border: 0,
               borderRadius: "40px",
-              fontSize: "15px",
+              fontSize,
             }}
           >
             {name}
           </button>
         )
       }
-      const MemoComponent = React.memo(Btn)
+      Btn.propTypes = {
+        name: PropTypes.string.isRequired,
+        fontSize: PropTypes.number,
+      }
       function App() {
-        const [save, setSave] = React.useState("Save Changes")
-        const changesSave = () => setSave("Revert Changes")
         return (
           <div>
-            <MemoComponent name={save} onClick={changesSave} />
-            <MemoComponent name='Cancel' />
+            <Btn name='Save' fontSize={18} />
+            <Btn name='Cancel' />
           </div>
         )
       }
