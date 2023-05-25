@@ -100,26 +100,30 @@
         )
       }
       */
-      function Btn({ name, size }) {
+      function Btn({ name, onClick }) {
         return (
           <button
+            onClick={onClick}
             style={{
               backgroundColor: "skyBlue",
               padding: "10px 20px",
               border: 0,
               borderRadius: "40px",
-              fontSize: size ? "18px" : "13px",
+              fontSize: "15px",
             }}
           >
             {name}
           </button>
         )
       }
+      const MemoComponent = React.memo(Btn)
       function App() {
+        const [save, setSave] = React.useState("Save Changes")
+        const changesSave = () => setSave("Revert Changes")
         return (
           <div>
-            <Btn name='Save' size={true} />
-            <Btn name='Cancel' size={false} />
+            <MemoComponent name={save} onClick={changesSave} />
+            <MemoComponent name='Cancel' />
           </div>
         )
       }
