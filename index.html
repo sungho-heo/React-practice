@@ -17,7 +17,7 @@
     <script type="text/babel">
       const dal = document.getElementById("dal")
       const root = ReactDOM.createRoot(dal)
-      function MituesToHours() {
+      /*function MituesToHours() {
         const [amount, setAmount] = React.useState(0)
         const [filp, setFilp] = React.useState(false)
         const onAmountChange = (event) => {
@@ -99,22 +99,27 @@
           </div>
         )
       }
+      */
+      function Btn({ name, size }) {
+        return (
+          <button
+            style={{
+              backgroundColor: "skyBlue",
+              padding: "10px 20px",
+              border: 0,
+              borderRadius: "40px",
+              fontSize: size ? "18px" : "13px",
+            }}
+          >
+            {name}
+          </button>
+        )
+      }
       function App() {
-        const [index, setIndex] = React.useState("xx")
-        const changeIndex = (event) => {
-          setIndex(event.target.value)
-        }
         return (
           <div>
-            <h1>Select Converter</h1>
-            <select value={index} onChange={changeIndex}>
-              <option value='xx'>Select Converter</option>
-              <option value='0'>Miutes&Hours</option>
-              <option value='1'>Km&miles</option>
-            </select>
-            <hr />
-            {index === "0" ? <MituesToHours /> : index === "xx"}
-            {index === "1" ? <KmTomiles /> : index === "xx"}
+            <Btn name='Save' size={true} />
+            <Btn name='Cancel' size={false} />
           </div>
         )
       }
